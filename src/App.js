@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from 'react' 
+const url = ""
+const App = () => {
+const[pokemon, setPokemon] = useState('');
+const[error, setError] = useState('error');
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+useEffect(() => {
+
+ fetch(url)
+ .then(response => {
+   if(response.ok){
+     return response.json()
+   }else{
+     throw new Error('wrong')
+   }
+ })
+ .then(response => setPokemon(response))
+ .catch(error => setError('true'))
+
+})
+
+if(error) {
+  return <div>{error}</div>
+}else{
+  return <div></div>
+}
 }
 
-export default App;
+export default App
