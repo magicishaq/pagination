@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react' 
-const url = ""
+const url = "https://pokeapi.co/api/v2/pokemon?limit=150"
 const App = () => {
 const[pokemon, setPokemon] = useState('');
 const[error, setError] = useState('error');
