@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import Logo from '../images/Pokemon-Logo.png'
 
 const Card = () => {
   const id = useParams();
@@ -28,11 +29,12 @@ console.log(pokemonData)
     <div id="cards">
       <figure className={`card card--${pokemonData.types[0].type.name }`}>
         <div className="card__image-container">
-          <img
-            src={pokemonData.sprites.other["offical-artwork"]}
+         {pokemonData.sprites && <img
+            src={pokemonData.sprites.other["official-artwork"].front_default}
+            //src={Logo}
             alt={pokemonData.name}
             className="card__image"
-          />
+          /> }
         </div>
 
         <figcaption className="card__caption">
