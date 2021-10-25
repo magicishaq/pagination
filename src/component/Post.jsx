@@ -8,6 +8,10 @@ const Post = ({pokemon}) => {
    const [loaded, setLoaded] = useState(false)
    const [error, setError] = useState(null)
 
+   const showCard = () => {
+       //go to next page
+   }
+
     useEffect(() => {
         fetch(url).then(response => {
             if(response.ok){
@@ -25,7 +29,8 @@ const Post = ({pokemon}) => {
             <small> {pokemonData.id} </small>
              <div className="post_image">
                  <img src={loaded ? pokemonData.sprites.front_default : defaultLogo} alt={`${name}-sprite`} />
-            </div>   
+            </div> 
+            <button className="post_button" onClick={showCard}>Show Card</button>  
         </div>
     )
 }
