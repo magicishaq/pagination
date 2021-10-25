@@ -23,7 +23,10 @@ const Card = () => {
   },[]);
 console.log(pokemonData)
   if(!loading){
-      return (<div>hello world</div>)
+      return (<div>Loading ...</div>)
+  }
+  if(error){
+      return (<div>Error has happened, please try again later</div>)
   }
   return (
     <div id="cards">
