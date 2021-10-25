@@ -31,7 +31,7 @@ if(error) {
           RenderComponent={Post}
           title="The First 151 Pokemon"
           pageLimit={5}
-          dataLimit={10}
+          dataLimit={10.2}
         />
       </>
     ) : (

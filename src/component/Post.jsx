@@ -5,6 +5,7 @@ import defaultLogo from '../images/Pokemon-Logo.png'
 const Post = ({pokemon}) => {
    const {name, url} = pokemon //get the data for the specific pokemon
    const [pokemonData, setPokemonData] = useState({}); 
+   const [loaded, setLoaded] = useState(false)
    const [error, setError] = useState(null)
 
     useEffect(() => {
@@ -14,21 +15,16 @@ const Post = ({pokemon}) => {
             }else{
             throw new Error(`couldn't find the pokemon`) 
             }
-        }).then(response => setPokemonData(response)).catch(error => setError(error))
+        }).then(response => setPokemonData(response)).then(response => setLoaded(true)).catch(error => setError(error))
         
-    }, [pokemonData, url])
-const sprite = error ?  pokemonData.sprites.front_default : defaultLogo
-if(error){
-    return (
-        <div>has not loaded</div>
-    )
-}
+    }, [name, url])
+
     return(
         <div className="post">
             <h1> {name} </h1>
             <small> {pokemonData.id} </small>
              <div className="post_image">
-                 <img src={sprite} alt={`${name}-sprite`} />
+                 <img src={loaded ? pokemonData.sprites.front_default : defaultLogo} alt={`${name}-sprite`} />
             </div>   
         </div>
     )
