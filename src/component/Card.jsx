@@ -20,7 +20,6 @@ const Card = () => {
       .then((response) => setPokemonData(response)).then(response => setLoading(!loading))
       .catch((error) => setError(error));
   },[]);
-console.log(pokemonData)
   if(!loading){
       return (<div>Loading ...</div>)
   }
@@ -42,15 +41,15 @@ console.log(pokemonData)
         <figcaption className="card__caption">
           <h1 className="card__name">{pokemonData.name}</h1>
           <h3 className="card__type">
-          {pokemonData.types.map((entry) => {
-          return <span>{entry.type.name} </span> ;
+          {pokemonData.types.map((entry, idx) => {
+          return <span key={idx}>{entry.type.name} </span> ;
           })}
           </h3>
           <table className="card__stats">
             <tbody>
-              {pokemonData.stats.map((metric) => {
+              {pokemonData.stats.map((metric, idx) => {
                 return (
-                  <tr>
+                  <tr key={idx}>
                     <th>{metric.stat.name}</th>
                     <td>{metric.base_stat}</td>
                   </tr>
@@ -60,14 +59,14 @@ console.log(pokemonData)
           </table>
 
           <div className="card__abilities">
+            <label htmlFor="moves">Move </label> 
+            <select name="moves" id="card_moves"  className={`card__ability card--${pokemonData.types[0].type.name }`}> 
             {pokemonData.moves.map((item, idx) => {
               return(
-                <h4 className="card__ability">
-              <span className="card__label">Move {idx}</span>
-              {item.move.name}
-            </h4>
+              <option className="card__label" value={item.move.name} key={idx}> {idx} {item.move.name}</option>
               )
             })}
+            </select>
           </div>
         </figcaption>
       </figure>

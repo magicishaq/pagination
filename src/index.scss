@@ -53,7 +53,9 @@ h1::first-letter {
 .Footer {
   background: #3a41b4;
   background: linear-gradient(90deg, #3a41b4 0%, #f61828 50%, #f2fc45 100%);
-  font-family: "Pokemon Solid", sans-serif;
+  font-family: "Pokemon Solid", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
   justify-content: center;
   font-size: 3vw;
   grid-area: footer;
@@ -250,10 +252,13 @@ small {
     &__abilities {
       display: flex;
       justify-content: space-between;
+      
     }
     &__ability {
-      margin-top: 1em;
       flex: 1 0;
+      margin-left: 15px;
+    border: 1px solid black;
+    border-radius: 20px;
     }
 
     box-shadow: 0px 5px 20px -10px #111111;
@@ -372,17 +377,16 @@ small {
     position: relative;
     transition: 0.4s;
 
-    @for $i from 1 through 9 {
-      &:nth-child(#{$i}) {
-        $rotation: (5 - random(10)) + deg;
-        transform: translateY(0px) rotate($rotation);
-      }
-    }
-
     &:hover {
       z-index: 5;
       box-shadow: 0px 13px 30px -15px #000000;
       transform: translateY(-10px);
     }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    width: 250px !important;
   }
 }
