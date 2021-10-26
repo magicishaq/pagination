@@ -32,10 +32,10 @@ const App = () => {
         <Router>
           <Header />
           <Switch>
-            <Route path="/card/:id">
+            <Route path="/card/:id" component={()=><Card/>}>
               <Card />
             </Route>
-            <Route path="/">
+            <Route path="/" component={()=><Pagination/>}>
               <div>
                 {pokemon.length > 0 ? (
                   <>
