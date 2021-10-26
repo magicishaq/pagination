@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import Logo from '../images/Pokemon-Logo.png'
 
 const Card = () => {
   const id = useParams();
@@ -61,14 +60,14 @@ console.log(pokemonData)
           </table>
 
           <div className="card__abilities">
-            <h4 className="card__ability">
-              <span className="card__label">Move One</span>
-              {pokemonData.moves[0].move.name}
+            {pokemonData.moves.map((item, idx) => {
+              return(
+                <h4 className="card__ability">
+              <span className="card__label">Move {idx}</span>
+              {item.move.name}
             </h4>
-            <h4 className="card__ability">
-              <span className="card__label">Move Two</span>
-              {pokemonData.moves[0].move.name}
-            </h4>
+              )
+            })}
           </div>
         </figcaption>
       </figure>
