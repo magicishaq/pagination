@@ -30,8 +30,7 @@ const Pagination = ({ pokemon, RenderComponent, title, pageLimit, dataLimit }) =
     };
   
     return (
-        <div>
-        <h1>{title}</h1>
+        <div className="Pagination">
         {/* <div><img className="logo" src={defaultLogo} alt='logo'/></div> */}
     
         {/* show the posts, 10 posts at a time */}
@@ -46,7 +45,7 @@ const Pagination = ({ pokemon, RenderComponent, title, pageLimit, dataLimit }) =
             along with page numbers, in our case, 5 page
             numbers at a time
         */}
-        <div className="pagination">
+        <div className="Pagination_button">
           {/* previous button */}
           <button
             onClick={goToPreviousPage}

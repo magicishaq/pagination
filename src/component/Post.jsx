@@ -1,5 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import defaultLogo from '../images/Pokemon-Logo.png'
+import {Link} from 'react-router-dom'
 
 
 const Post = ({pokemon}) => {
@@ -7,10 +8,6 @@ const Post = ({pokemon}) => {
    const [pokemonData, setPokemonData] = useState({}); 
    const [loaded, setLoaded] = useState(false)
    const [error, setError] = useState(null)
-
-   const showCard = () => {
-       //go to next page
-   }
 
     useEffect(() => {
         fetch(url).then(response => {
@@ -30,7 +27,9 @@ const Post = ({pokemon}) => {
              <div className="post_image">
                  <img src={loaded ? pokemonData.sprites.front_default : defaultLogo} alt={`${name}-sprite`} />
             </div> 
-            <button className="post_button" onClick={showCard}>Show Card</button>  
+            <Link to={`/card/${pokemonData.id}/`} >
+            <span className="post_button">Show Card</span> 
+            </Link> 
         </div>
     )
 }
